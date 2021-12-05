@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import {Button} from 'react-bootstrap';
+import { useState } from 'react';
+import Donee from './Component/done';
+import Undone from './Component/undone';
 import './App.css';
+import Todolist from './Component/todolist';
 
 function App() {
+  const [show,setshow]=useState(false)
+  const [showundone,setshowundone]=useState(false)
+  const [showDone,setshowDone]=useState(false)
+  
+  
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{display:'flex',justifyContent:'space-around',marginTop:'50px'}}>
+<Button variant="warning" onClick={()=>setshow(!show) }>All</Button>
+{show && <Todolist/>}
+<Button variant="danger" onClick={()=>setshowundone(!showundone)}>UnDone</Button>
+{showundone && <Undone/>}
+<Button variant="success" onClick={()=>setshowDone(!showDone)}>Done</Button>
+{showDone && <Donee/>}
     </div>
   );
 }
